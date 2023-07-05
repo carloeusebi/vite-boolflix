@@ -9,6 +9,14 @@ export default {
 		overview: String,
 		img: String,
 	},
+	computed: {
+		flagUrl() {
+			const url = new URL(`../assets/img/${this.originalLanguage}.png`, import.meta.url);
+			const lang = this.originalLanguage;
+
+			return lang === 'it' || lang === 'en' ? url.href : null;
+		},
+	},
 };
 </script>
 
@@ -26,6 +34,14 @@ export default {
 			<div class="overlay">
 				<p><strong>Titolo:</strong> {{ title }}</p>
 				<p><strong>Titolo originale:</strong> {{ originalTitle }}</p>
+				<div class="original-language">
+					<strong>Lingua originale: </strong>
+					<img
+						v-if="flagUrl"
+						:src="flagUrl"
+						:alt="originalLanguage" />
+					<span v-else>{{ originalLanguage.toUpperCase() }}</span>
+				</div>
 				<!-- VOTE -->
 				<p class="rating">
 					<strong>Rating:</strong>
@@ -83,6 +99,18 @@ figure {
 	right: 0;
 	text-align: center;
 	font-weight: bold;
+}
+
+.original-language {
+	display: flex;
+	align-items: center;
+
+	img {
+		width: 20px;
+		height: auto;
+		border-radius: 2px;
+		margin-left: 0.25rem;
+	}
 }
 
 .overlay {
