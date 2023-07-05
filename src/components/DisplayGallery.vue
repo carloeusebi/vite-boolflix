@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss">
 @use '../assets/sass/vars' as *;
+
 .grid-container {
 	grid-template-columns: 50% 50%;
 	column-gap: 0.25rem;
@@ -34,6 +35,7 @@ export default {
 h2 {
 	color: white;
 	text-transform: uppercase;
+	margin-bottom: 2rem;
 }
 
 @media #{$media-tablet} {

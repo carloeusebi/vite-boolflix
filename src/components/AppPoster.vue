@@ -15,15 +15,30 @@ export default {
 <template>
 	<div class="poster">
 		<figure>
+			<!-- IMAGE -->
 			<img
 				:src="img"
 				:alt="title"
 				onerror="this.style.display='none'" />
+			<!-- ON 404 -->
 			<p class="on-image-error">{{ title }}</p>
+			<!-- OVERLAY -->
 			<div class="overlay">
 				<p><strong>Titolo:</strong> {{ title }}</p>
 				<p><strong>Titolo originale:</strong> {{ originalTitle }}</p>
-				<p><strong>Voto:</strong> {{ vote }}</p>
+				<!-- VOTE -->
+				<p class="rating">
+					<strong>Rating:</strong>
+					<font-awesome-icon
+						v-for="i in vote"
+						:key="i"
+						:icon="['fas', 'star']" />
+					<font-awesome-icon
+						v-for="i in 5 - vote"
+						:key="i"
+						:icon="['far', 'star']" />
+				</p>
+				<!-- OVERVIEW -->
 				<div class="overview-container">
 					<p class="truncate"><strong>Trama:</strong> {{ overview }}</p>
 				</div>
@@ -64,7 +79,12 @@ export default {
 		font-weight: bold;
 	}
 
+	&:hover .overlay {
+		display: block;
+	}
+
 	.overlay {
+		display: none;
 		position: absolute;
 		inset: 0;
 		color: white;
@@ -87,10 +107,23 @@ export default {
 			overflow: auto;
 		}
 
+		/* if overview is longer than fives row it truncates the overview when not in hover;
+		when in hover, over the overview, it display the overview in full width*/
 		.truncate:not(:hover) {
+			display: -webkit-box;
+			-webkit-line-clamp: 5;
+			-webkit-box-orient: vertical;
 			text-overflow: ellipsis;
-			white-space: nowrap;
 			overflow: hidden;
+		}
+	}
+
+	.rating {
+		display: flex;
+		align-items: center;
+
+		strong {
+			margin-right: 0.5rem;
 		}
 	}
 }
