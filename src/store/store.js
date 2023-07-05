@@ -14,27 +14,31 @@ export const store = reactive({
 /*************************************************** */
 
 /**
- * Given an array of movie objects, it maps then filtering only the requested fields and then stores them in the store
+ * Given an array of movie objects, it maps them filtering only the requested fields and then stores them in the store
  * @param {[Object]} movies 
  */
 export const setMovies = movies => {
-    store.movies = movies.map(({ title, original_title, original_language, vote_average }) => ({
-        title,
-        original_title,
-        original_language,
-        vote_average,
-    }));
+    store.movies = movies.map(({ title, original_title, original_language, vote_average, overview }) => (
+        {
+            title,
+            original_title,
+            original_language,
+            vote_average,
+            overview
+        }));
 };
 
 /**
- * Given an array of tv shows objects, it maps then filtering only the requested fields and then stores them in the store
+ * Given an array of tv shows objects, it maps them filtering only the requested fields and then stores them in the store
  * @param {[Object]} tvShows 
  */
 export const setTvShows = tvShows => {
-    store.tvShows = tvShows.map(({ name, original_name, original_language, vote_average }) => ({
-        name,
-        original_name,
-        original_language,
-        vote_average,
-    }));
+    store.tvShows = tvShows.map(({ name, original_name, original_language, vote_average, overview }) => (
+        {
+            name,
+            original_name,
+            original_language,
+            vote_average,
+            overview,
+        }));
 }
