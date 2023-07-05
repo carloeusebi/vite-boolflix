@@ -51,7 +51,6 @@ export default {
 .poster {
 	cursor: pointer;
 	position: relative;
-	height: 450px;
 
 	img {
 		position: relative;

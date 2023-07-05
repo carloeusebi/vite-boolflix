@@ -1,5 +1,5 @@
 <script>
-import AppPoster from './AppPoster.vue';
+import DisplayPoster from './DisplayPoster.vue';
 
 export default {
 	props: {
@@ -7,7 +7,7 @@ export default {
 		title: String,
 		media: Array,
 	},
-	components: { AppPoster },
+	components: { DisplayPoster },
 };
 </script>
 
@@ -15,7 +15,7 @@ export default {
 	<section :id="sectionId">
 		<h2>{{ title }}</h2>
 		<div class="grid-container">
-			<AppPoster
+			<DisplayPoster
 				v-for="m in media"
 				:key="m.id"
 				v-bind="m" />
