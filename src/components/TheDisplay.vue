@@ -9,8 +9,17 @@ export default {
 </script>
 
 <template>
-	<p>{{ movies }}</p>
-	<p>{{ tvShows }}</p>
+	<div>
+		<p v-for="movie in movies">
+			{{ movie }}
+		</p>
+	</div>
+	<br />
+	<hr />
+	<br />
+	<div>
+		<p v-for="show in tvShows">{{ show }}</p>
+	</div>
 </template>
 
 <style scoped></style>
