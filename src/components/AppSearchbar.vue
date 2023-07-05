@@ -13,6 +13,7 @@ export default {
 	<form @submit.prevent="$emit('submitted', searchedWord)">
 		<input
 			v-model="searchedWord"
+			placeholder="signore anelli"
 			type="search" />
 		<button type="submit">search</button>
 	</form>
