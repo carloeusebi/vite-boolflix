@@ -6,6 +6,10 @@
 	box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+	width: 1px;
+}
+
 body {
 	background-color: #1b1b1b;
 	font-family: sans-serif;
@@ -23,7 +27,7 @@ body {
 
 img {
 	display: block;
-	width: 100%;
+	max-width: 100%;
 }
 
 @media #{$media-tablet} {
