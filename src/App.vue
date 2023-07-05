@@ -1,9 +1,10 @@
 <script>
+import TheHeader from './components/TheHeader.vue';
 import TheDisplay from './components/TheDisplay.vue';
 import { store } from './store/store';
 
 export default {
-	components: { TheDisplay },
+	components: { TheHeader, TheDisplay },
 	mounted() {
 		const params = { params: { query: 'anelli' } };
 
@@ -37,6 +38,7 @@ export default {
 </script>
 
 <template>
+	<TheHeader />
 	<TheDisplay />
 </template>
 
