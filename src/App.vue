@@ -1,27 +1,23 @@
 <script>
+import TheDisplay from './components/TheDisplay.vue';
+import { store } from './store/store';
+
 export default {
-	data() {
-		return {
-			movies: [],
-			tvs: [],
-		};
-	},
+	components: { TheDisplay },
 	mounted() {
 		const params = { params: { query: 'anelli' } };
 
 		this.$http
 			.get(`/movie`, params)
 			.then(res => {
-				this.movies = res.data;
-				console.log(res.data);
+				store.movies = res.data;
 			})
 			.catch(e => console.log(e.response.data));
 
 		this.$http
 			.get('/tv', params)
 			.then(res => {
-				this.tvs = res.data;
-				console.log(res.data);
+				store.tvShows = res.data;
 			})
 			.catch(e => console.log(e.response.data));
 	},
@@ -29,8 +25,7 @@ export default {
 </script>
 
 <template>
-	<h2>{{ movies }}</h2>
-	<h2>{{ tvs }}</h2>
+	<TheDisplay />
 </template>
 
 <style></style>
