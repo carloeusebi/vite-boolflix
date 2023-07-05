@@ -7,6 +7,7 @@ export default {
 		originalLanguage: String,
 		vote: Number,
 		overview: String,
+		img: String,
 	},
 };
 </script>
@@ -18,6 +19,9 @@ export default {
 		<p>Lingua Originale: {{ originalLanguage }}</p>
 		<p>Voto: {{ vote }}</p>
 		<p>Trama: {{ overview }}</p>
+		<img
+			:src="img"
+			:alt="title" />
 	</div>
 	<hr />
 </template>

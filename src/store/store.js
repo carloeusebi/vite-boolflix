@@ -18,29 +18,37 @@ export const store = reactive({
  * @param {[Object]} movies 
  */
 export const setMovies = movies => {
-    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview }) => (
-        {
+    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview, poster_path }) => {
+
+        const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        return {
             id,
             title,
             originalTitle: original_title,
             originalLanguage: original_language,
             vote: vote_average,
-            overview
-        }));
+            overview,
+            img
+        };
+    });
 };
 
 /**
  * Given an array of tv shows objects, it maps them filtering only the requested fields and then stores them in the store
  * @param {[Object]} tvShows 
- */
+*/
 export const setTvShows = tvShows => {
-    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview }) => (
-        {
+    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, poster_path }) => {
+
+        const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        return {
             id: id,
             title: name,
             originalTitle: original_name,
             originalLanguage: original_language,
             vote: vote_average,
             overview,
-        }));
+            img
+        }
+    });
 }
