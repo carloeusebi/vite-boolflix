@@ -2,7 +2,7 @@
 export default {
 	data() {
 		return {
-			searchedWord: '',
+			searchedWord: 'Signore degli anelli',
 		};
 	},
 	emits: ['submitted'],
@@ -13,7 +13,6 @@ export default {
 	<form @submit.prevent="$emit('submitted', searchedWord)">
 		<input
 			v-model="searchedWord"
-			placeholder="signore anelli"
 			type="search" />
 		<button type="submit">search</button>
 	</form>
