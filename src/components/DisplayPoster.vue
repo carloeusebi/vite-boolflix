@@ -109,7 +109,10 @@ figure {
 		width: 20px;
 		height: auto;
 		border-radius: 2px;
-		margin-left: 0.25rem;
+	}
+
+	strong {
+		margin-right: 0.25rem;
 	}
 }
 

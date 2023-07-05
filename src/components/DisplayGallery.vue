@@ -49,4 +49,24 @@ h2 {
 		grid-template-columns: repeat(5, 1fr);
 	}
 }
+
+// on hover animations
+
+.poster {
+	transition: transform 500ms;
+}
+
+.grid-container:hover .poster {
+	transform: translateX(-25%);
+}
+
+.poster:hover ~ .poster {
+	transform: translateX(25%);
+}
+
+.grid-container .poster:focus,
+.grid-container .poster:hover {
+	transform: scale(1.5);
+	z-index: 1;
+}
 </style>
