@@ -1,30 +1,28 @@
 <script>
+import AppPoster from './AppPoster.vue';
 import { store } from '../store/store';
 
 export default {
-	computed: {
-		movies() {
-			return store.movies;
-		},
-		tvShows() {
-			return store.tvShows;
-		},
-	},
+	data: () => store,
+	components: { AppPoster },
 };
 </script>
 
 <template>
-	<div>
-		<p v-for="movie in movies">
-			{{ movie }}
-		</p>
-	</div>
+	<h2>MOVIES</h2>
+	<AppPoster
+		v-for="movie in movies"
+		:key="movie.id"
+		v-bind="movie" />
 	<br />
 	<hr />
+	<hr />
 	<br />
-	<div>
-		<p v-for="show in tvShows">{{ show }}</p>
-	</div>
+	<h2>TV SHOWS</h2>
+	<AppPoster
+		v-for="show in tvShows"
+		:key="show.id"
+		v-bind="show" />
 </template>
 
 <style scoped></style>

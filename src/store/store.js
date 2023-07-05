@@ -18,12 +18,13 @@ export const store = reactive({
  * @param {[Object]} movies 
  */
 export const setMovies = movies => {
-    store.movies = movies.map(({ title, original_title, original_language, vote_average, overview }) => (
+    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview }) => (
         {
+            id,
             title,
-            original_title,
-            original_language,
-            vote_average,
+            originalTitle: original_title,
+            originalLanguage: original_language,
+            vote: vote_average,
             overview
         }));
 };
@@ -33,12 +34,13 @@ export const setMovies = movies => {
  * @param {[Object]} tvShows 
  */
 export const setTvShows = tvShows => {
-    store.tvShows = tvShows.map(({ name, original_name, original_language, vote_average, overview }) => (
+    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview }) => (
         {
-            name,
-            original_name,
-            original_language,
-            vote_average,
+            id: id,
+            title: name,
+            originalTitle: original_name,
+            originalLanguage: original_language,
+            vote: vote_average,
             overview,
         }));
 }
