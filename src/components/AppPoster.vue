@@ -13,17 +13,17 @@ export default {
 </script>
 
 <template>
-	<div>
-		<p>Titolo: {{ title }}</p>
-		<p>Titolo Originale: {{ originalTitle }}</p>
-		<p>Lingua Originale: {{ originalLanguage }}</p>
-		<p>Voto: {{ vote }}</p>
-		<p>Trama: {{ overview }}</p>
+	<div class="poster">
 		<img
 			:src="img"
 			:alt="title" />
 	</div>
-	<hr />
 </template>
 
-<style></style>
+<style>
+/* I choose not to use scoped here because i don't want to create 100 css selectors, one for each poster, but i wanted to include the writing of the css in this very file */
+
+.poster {
+	cursor: pointer;
+}
+</style>

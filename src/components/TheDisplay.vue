@@ -1,28 +1,30 @@
 <script>
-import AppPoster from './AppPoster.vue';
+import DisplayGallery from './DisplayGallery.vue';
 import { store } from '../store/store';
 
 export default {
 	data: () => store,
-	components: { AppPoster },
+	components: { DisplayGallery },
 };
 </script>
 
 <template>
-	<h2>MOVIES</h2>
-	<AppPoster
-		v-for="movie in movies"
-		:key="movie.id"
-		v-bind="movie" />
-	<br />
-	<hr />
-	<hr />
-	<br />
-	<h2>TV SHOWS</h2>
-	<AppPoster
-		v-for="show in tvShows"
-		:key="show.id"
-		v-bind="show" />
+	<main>
+		<div class="container">
+			<DisplayGallery
+				:media="movies"
+				section-id="movies"
+				title="Movies" />
+			<DisplayGallery
+				:media="tvShows"
+				section-id="tv-series"
+				title="TV Shows" />
+		</div>
+	</main>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+	margin-top: 3rem;
+}
+</style>
