@@ -23,13 +23,13 @@ export default {
 	</section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../assets/sass/vars' as *;
 .flex-container {
 	flex-wrap: wrap;
 	justify-content: start;
 
-	* {
+	> * {
 		flex: 0 0 50%;
 		padding: 0.5rem 0.25rem;
 	}

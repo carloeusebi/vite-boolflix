@@ -14,16 +14,42 @@ export default {
 
 <template>
 	<div class="poster">
-		<img
-			:src="img"
-			:alt="title" />
+		<figure>
+			<img
+				:src="img"
+				:alt="title"
+				onerror="this.style.display='none'" />
+			<p class="on-image-error">{{ title }}</p>
+		</figure>
 	</div>
 </template>
 
-<style>
-/* I choose not to use scoped here because i don't want to create 100 css selectors, one for each poster, but i wanted to include the writing of the css in this very file */
-
+<style lang="scss" scoped>
 .poster {
 	cursor: pointer;
+	position: relative;
+
+	img {
+		position: relative;
+		z-index: 1;
+	}
+
+	figure {
+		height: 100%;
+		background-color: #989898;
+		background-image: url('../assets/img/blank-background.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.on-image-error {
+		position: absolute;
+		bottom: 2rem;
+		left: 0;
+		right: 0;
+		text-align: center;
+		font-weight: bold;
+	}
 }
 </style>
