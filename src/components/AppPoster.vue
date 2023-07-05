@@ -51,5 +51,8 @@ export default {
 		text-align: center;
 		font-weight: bold;
 	}
+
+	.overlay {
+	}
 }
 </style>

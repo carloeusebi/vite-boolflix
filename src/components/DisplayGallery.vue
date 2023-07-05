@@ -14,7 +14,7 @@ export default {
 <template>
 	<section :id="sectionId">
 		<h2>{{ title }}</h2>
-		<div class="flex-container">
+		<div class="grid-container">
 			<AppPoster
 				v-for="m in media"
 				:key="m.id"
@@ -25,14 +25,10 @@ export default {
 
 <style lang="scss">
 @use '../assets/sass/vars' as *;
-.flex-container {
-	flex-wrap: wrap;
-	justify-content: start;
-
-	> * {
-		flex: 0 0 50%;
-		padding: 0.5rem 0.25rem;
-	}
+.grid-container {
+	grid-template-columns: 50% 50%;
+	column-gap: 0.25rem;
+	row-gap: 1rem;
 }
 
 h2 {
@@ -41,26 +37,14 @@ h2 {
 }
 
 @media #{$media-tablet} {
-	.flex-container > * {
-		flex: 0 0 25%;
+	.grid-container {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 @media #{$media-laptop} {
-	.flex-container > * {
-		flex: 0 0 20%;
-	}
-}
-
-@media #{$media-desktop} {
-	.container {
-		max-width: 1140px;
-	}
-}
-
-@media #{$media-large} {
-	.container {
-		max-width: 1320px;
+	.grid-container {
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 </style>
