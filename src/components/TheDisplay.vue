@@ -2,8 +2,13 @@
 import { store } from '../store/store';
 
 export default {
-	data() {
-		return store;
+	computed: {
+		movies() {
+			return store.movies;
+		},
+		tvShows() {
+			return store.tvShows;
+		},
 	},
 };
 </script>

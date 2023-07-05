@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseURL, API_KEY } from '../assets/data';
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     baseURL,
     params: {},
     headers: {
@@ -9,5 +9,3 @@ const axiosInstance = axios.create({
         Authorization: `Bearer ${API_KEY}`
     }
 });
-
-export default axiosInstance;

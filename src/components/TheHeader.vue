@@ -6,11 +6,11 @@ export default {
 	components: { AppSearchbar },
 	methods: {
 		handleSubmit(searchedWord) {
-			console.log(searchedWord);
 			store.query = searchedWord;
-			console.log(store);
+			this.$emit('submitted-new-query', searchedWord);
 		},
 	},
+	emits: ['submitted-new-query'],
 };
 </script>
 
