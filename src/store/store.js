@@ -21,12 +21,13 @@ export const setMovies = movies => {
     store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview, poster_path }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        const vote = Math.ceil(vote_average / 2);
         return {
             id,
             title,
             originalTitle: original_title,
             originalLanguage: original_language,
-            vote: vote_average,
+            vote,
             overview,
             img
         };
@@ -41,12 +42,13 @@ export const setTvShows = tvShows => {
     store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, poster_path }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        const vote = Math.ceil(vote_average / 2);
         return {
             id: id,
             title: name,
             originalTitle: original_name,
             originalLanguage: original_language,
-            vote: vote_average,
+            vote,
             overview,
             img
         }
