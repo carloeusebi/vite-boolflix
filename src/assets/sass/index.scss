@@ -30,6 +30,10 @@ img {
 	max-width: 100%;
 }
 
+ul {
+	list-style-type: none;
+}
+
 @media #{$media-tablet} {
 	.container {
 		max-width: 720px;
