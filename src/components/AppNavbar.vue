@@ -16,6 +16,8 @@ export default {};
 </template>
 
 <style lang="scss" scoped>
+@use '../assets/sass/vars' as *;
+
 ul {
 	display: flex;
 }
@@ -32,6 +34,16 @@ li {
 
 	&:hover {
 		color: white;
+	}
+}
+
+nav {
+	display: none;
+}
+
+@media #{$media-laptop} {
+	nav {
+		display: block;
 	}
 }
 </style>

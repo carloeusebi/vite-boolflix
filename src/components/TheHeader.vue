@@ -5,6 +5,11 @@ import { store } from '../store/store';
 
 export default {
 	components: { AppSearchbar, AppNavbar },
+	data() {
+		return {
+			showSearchBar: false,
+		};
+	},
 	methods: {
 		handleSubmit() {
 			this.$emit('submitted-new-query');
@@ -30,15 +35,21 @@ export default {
 		</div>
 		<div class="right">
 			<AppSearchbar
+				v-if="showSearchBar"
 				@submitted="handleSubmit"
 				@key-pressed="handleKeyPress" />
+			<font-awesome-icon
+				@click="showSearchBar = !showSearchBar"
+				icon="fa-solid fa-magnifying-glass" />
+			<font-awesome-icon icon="fa-solid fa-bell" />
 		</div>
 	</header>
 </template>
 
 <style lang="scss" scoped>
 header {
-	margin: 0.5rem 1rem 3rem;
+	margin: 0.5rem 2rem 3rem;
+	color: white;
 
 	&,
 	:is(.left, .right) {
@@ -46,6 +57,15 @@ header {
 		justify-content: space-between;
 		align-items: center;
 	}
+}
+
+.svg-inline--fa {
+	font-size: 1.15rem;
+	cursor: pointer;
+}
+
+.fa-magnifying-glass {
+	margin-right: 0.75rem;
 }
 
 .logo {
