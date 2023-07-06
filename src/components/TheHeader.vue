@@ -5,9 +5,11 @@ import { store } from '../store/store';
 export default {
 	components: { AppSearchbar },
 	methods: {
-		handleSubmit(searchedWord) {
-			store.query = searchedWord;
-			this.$emit('submitted-new-query', searchedWord);
+		handleSubmit() {
+			this.$emit('submitted-new-query');
+		},
+		handleKeyPress(word) {
+			store.query = word;
 		},
 	},
 	emits: ['submitted-new-query'],
@@ -15,7 +17,9 @@ export default {
 </script>
 
 <template>
-	<AppSearchbar @submitted="handleSubmit" />
+	<AppSearchbar
+		@submitted="handleSubmit"
+		@key-pressed="handleKeyPress" />
 </template>
 
 <style scoped></style>

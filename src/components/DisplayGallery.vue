@@ -50,7 +50,7 @@ h2 {
 	}
 }
 
-// on hover animations
+// ANIMATIONS
 
 .poster {
 	transition: transform 500ms;

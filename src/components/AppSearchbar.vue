@@ -2,15 +2,17 @@
 export default {
 	data() {
 		return {
-			searchedWord: 'Signore degli anelli',
+			searchedWord: '',
 		};
 	},
-	emits: ['submitted'],
+	emits: ['submitted', 'key-pressed'],
 };
 </script>
 
 <template>
-	<form @submit.prevent="$emit('submitted', searchedWord)">
+	<form
+		@keyup="$emit('key-pressed', searchedWord)"
+		@submit.prevent="$emit('submitted')">
 		<input
 			v-model="searchedWord"
 			type="search" />

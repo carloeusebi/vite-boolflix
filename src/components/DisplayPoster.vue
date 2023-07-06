@@ -28,8 +28,10 @@ export default {
 				:src="img"
 				:alt="title"
 				onerror="this.style.display='none'" />
+
 			<!-- ON 404 -->
 			<p class="on-image-error">{{ title }}</p>
+
 			<!-- OVERLAY -->
 			<div class="overlay">
 				<p><strong>Titolo:</strong> {{ title }}</p>
@@ -42,6 +44,7 @@ export default {
 						:alt="originalLanguage" />
 					<span v-else>{{ originalLanguage.toUpperCase() }}</span>
 				</div>
+
 				<!-- VOTE -->
 				<p class="rating">
 					<strong>Rating:</strong>
@@ -54,6 +57,7 @@ export default {
 						:key="i"
 						:icon="['far', 'star']" />
 				</p>
+
 				<!-- OVERVIEW -->
 				<div class="overview-container">
 					<p class="truncate"><strong>Trama:</strong> {{ overview }}</p>
@@ -140,8 +144,7 @@ figure {
 		overflow: auto;
 	}
 
-	/* if overview is longer than fives row it truncates the overview when not in hover;
-		when in hover, over the overview, it display the overview in full width*/
+	/* if overview is longer than fives row it truncates the overview when not in hover; when in hover, over the overview, it display the overview in full width*/
 	.truncate:not(:hover) {
 		display: -webkit-box;
 		-webkit-line-clamp: 5;
