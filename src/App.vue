@@ -5,6 +5,9 @@ import { setMovies, setTvs } from './store/store';
 import { axiosInstance } from './axios';
 import { store } from './store/store';
 
+const MOVIE = 'movie';
+const TV = 'tv';
+
 /**
  *
  * @param {string} endpoint the endpoint to call
@@ -31,17 +34,15 @@ export default {
 	methods: {
 		handleNewQuery() {
 			if (store.query) {
-				const MOVIE = 'movie';
-				const TV = 'tv';
-
 				// pass to fetch result the endpoint and the store function as a callback
 				fetchResults(`/search/${MOVIE}`, setMovies);
 				fetchResults(`/search/${TV}`, setTvs);
-
-				fetchGenres(`/genre/${MOVIE}/list`, MOVIE);
-				fetchGenres(`/genre/${TV}/list`, TV);
 			}
 		},
+	},
+	created() {
+		fetchGenres(`/genre/${MOVIE}/list`, MOVIE);
+		fetchGenres(`/genre/${TV}/list`, TV);
 	},
 };
 </script>

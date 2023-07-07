@@ -26,10 +26,13 @@ export default {
 		},
 		genres() {
 			const { genres } = store[this.category];
-			return this.genre_ids.reduce((str, id) => {
+
+			const movieGenres = this.genre_ids.reduce((str, id) => {
 				const genreName = genres.find(genre => genre.id === id).name;
 				return (str += genreName + ', ');
 			}, '');
+
+			return movieGenres.slice(0, -2); //removes the last ', '
 		},
 	},
 	methods: {
