@@ -17,6 +17,11 @@ export default {
       return lang === 'it' || lang === 'en' ? url.href : null;
     },
   },
+  methods: {
+    starClass(n) {
+      return n <= this.vote ? 'fa-solid' : 'fa-regular';
+    },
+  },
 };
 </script>
 
@@ -49,13 +54,9 @@ export default {
         <p class="rating">
           <strong>Rating:</strong>
           <font-awesome-icon
-            v-for="i in vote"
-            :key="i"
-            :icon="['fas', 'star']" />
-          <font-awesome-icon
-            v-for="i in 5 - vote"
-            :key="i"
-            :icon="['far', 'star']" />
+            v-for="n in 5"
+            :key="n"
+            :icon="`${starClass(n)} fa-star`" />
         </p>
 
         <!-- OVERVIEW -->
