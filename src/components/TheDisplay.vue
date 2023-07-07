@@ -12,9 +12,11 @@ export default {
 	<main>
 		<div class="container">
 			<DisplayGallery
+				v-if="activePage !== 'Serie Tv'"
 				category="movie"
 				title="Movies" />
 			<DisplayGallery
+				v-if="activePage !== 'Film'"
 				category="tv"
 				title="TV Shows" />
 		</div>

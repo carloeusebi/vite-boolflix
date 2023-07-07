@@ -1,4 +1,6 @@
 <script>
+import { store } from '../store/store';
+
 export default {
 	data() {
 		return {
@@ -8,7 +10,7 @@ export default {
 	},
 	methods: {
 		handleClick(clickedLink) {
-			this.selectedLink = clickedLink;
+			store.activePage = this.selectedLink = clickedLink;
 		},
 	},
 };
@@ -19,7 +21,7 @@ export default {
 		<ul>
 			<li
 				v-for="link in links"
-				@click="selectedLink = link"
+				@click="handleClick(link)"
 				:class="{ active: link === selectedLink }">
 				{{ link }}
 			</li>
