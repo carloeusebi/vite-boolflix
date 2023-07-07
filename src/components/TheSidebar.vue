@@ -15,9 +15,10 @@ export default {
 
 			const genres = this.store[page].genres;
 
-			//adding a 'show all' genre before every other genre;
-			genres.unshift({ id: null, name: 'Tutti' });
-
+			//adding a 'show all genres' before every other genre;
+			if (genres[0].id) {
+				genres.unshift({ id: null, name: 'Tutti' });
+			}
 			return genres;
 		},
 	},
