@@ -1,2 +1,2 @@
 export const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MzcyYTU2MmY2NTAzMTMyZTZmZTg2NjhhM2FhN2Y5MSIsInN1YiI6IjY0YTU0YzMyNWE5OTE1MDBlM2M4NjMxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A3BzXllYllROJ4DR8gRw8zBFTt6Muq5SxEFc9gLZ7ww';
-export const baseURL = 'https://api.themoviedb.org/3/search';
+export const baseURL = 'https://api.themoviedb.org/3';

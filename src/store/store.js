@@ -18,7 +18,7 @@ export const store = reactive({
  * @param {[Object]} movies 
  */
 export const setMovies = movies => {
-    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview, poster_path }) => {
+    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview, poster_path, cast }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
         const vote = Math.ceil(vote_average / 2);
@@ -29,6 +29,7 @@ export const setMovies = movies => {
             originalLanguage: original_language,
             vote,
             overview,
+            cast,
             img
         };
     });
@@ -39,7 +40,7 @@ export const setMovies = movies => {
  * @param {[Object]} tvShows 
 */
 export const setTvShows = tvShows => {
-    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, poster_path }) => {
+    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, cast, poster_path }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
         const vote = Math.ceil(vote_average / 2);
@@ -50,6 +51,7 @@ export const setTvShows = tvShows => {
             originalLanguage: original_language,
             vote,
             overview,
+            cast,
             img
         }
     });
