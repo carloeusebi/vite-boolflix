@@ -22,15 +22,18 @@ export default {
 				v-if="thereAreItems"
 				class="the-display">
 				<DisplayGallery
-					v-if="activePage !== 'Serie Tv'"
+					v-if="activePage !== 'tv'"
 					category="movie"
 					title="Movies" />
 				<DisplayGallery
-					v-if="activePage !== 'Film'"
+					v-if="activePage !== 'movie'"
 					category="tv"
 					title="TV Shows" />
 			</div>
-			<div v-else><h2>Cerca</h2></div>
+			<div v-else>
+				<h2>Cerca film o serie tv...</h2>
+				<p>La ricerca per genere si può fare solo sulle pagine Film o Serie Tv</p>
+			</div>
 		</div>
 	</main>
 </template>
@@ -38,5 +41,10 @@ export default {
 <style scoped>
 section {
 	margin-bottom: 6rem;
+}
+
+h2,
+p {
+	color: rgba(211, 211, 211, 0.575);
 }
 </style>

@@ -4,7 +4,7 @@ import { store } from '../store/store';
 export default {
 	data() {
 		return {
-			links: ['Home', 'Film', 'Serie Tv'],
+			links: ['Home', 'movie', 'tv'],
 			selectedLink: 'Home',
 		};
 	},
@@ -39,7 +39,7 @@ ul {
 li {
 	padding: 0 1rem;
 	font-weight: bold;
-	color: rgba(211, 211, 211, 0.575);
+	color: $text-gray;
 	cursor: pointer;
 
 	&.active {

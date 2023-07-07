@@ -10,7 +10,15 @@ export default {
 	data() {
 		return { store };
 	},
-	computed: {},
+	computed: {
+		filteredPerGenre() {
+			if (this.store.genreFilter) {
+				return this.store[this.category].results.filter(({ genre_ids }) => genre_ids.includes(this.store.genreFilter));
+			} else {
+				return this.store[this.category].results;
+			}
+		},
+	},
 	components: { DisplayPoster },
 };
 </script>
@@ -20,7 +28,7 @@ export default {
 		<h2>{{ title }}</h2>
 		<div class="grid-container">
 			<DisplayPoster
-				v-for="m in store[category].results"
+				v-for="m in filteredPerGenre"
 				:key="m.id"
 				:category="category"
 				v-bind="m" />
@@ -28,7 +36,7 @@ export default {
 	</section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use '../assets/sass/vars' as *;
 
 .grid-container {
