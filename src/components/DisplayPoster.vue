@@ -1,4 +1,6 @@
 <script>
+import { axiosInstance } from '../axios';
+
 export default {
 	props: {
 		id: Number,
@@ -8,7 +10,10 @@ export default {
 		vote: Number,
 		overview: String,
 		img: String,
-		cast: Array,
+		category: String,
+	},
+	data() {
+		return { cast: '' };
 	},
 	computed: {
 		flagUrl() {
@@ -22,6 +27,23 @@ export default {
 		starClass(n) {
 			return n <= this.vote ? 'fa-solid' : 'fa-regular';
 		},
+	},
+	mounted() {
+		const endpoint = `${this.category}/${this.id}/credits`;
+
+		console.log(endpoint);
+
+		axiosInstance.get(endpoint).then(res => {
+			const cast = res.data.cast;
+			const firstFiveActors = [];
+
+			for (let i = 0; firstFiveActors.length < 5 && i < cast.length; i++) {
+				if (cast[i].known_for_department === 'Acting') {
+					firstFiveActors.push(cast[i].name);
+				}
+			}
+			this.cast = firstFiveActors.join(', ');
+		});
 	},
 };
 </script>
@@ -52,12 +74,7 @@ export default {
 				</div>
 
 				<!-- CAST -->
-				<div class="cast">
-					<strong>Cast:</strong>
-					<ul>
-						<li v-for="actor in cast">{{ actor }}</li>
-					</ul>
-				</div>
+				<div class="cast"><strong>Cast:</strong> {{ cast }}</div>
 
 				<!-- VOTE -->
 				<p class="rating">
