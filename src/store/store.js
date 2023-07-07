@@ -40,6 +40,12 @@ export const setMovies = movies => {
  * @param {[Object]} tvShows 
 */
 export const setTvShows = tvShows => {
+
+    console.log(tvShows[0]);
+    console.log(tvShows[0].cast);
+
+    console.log(Object.keys(tvShows[0]));
+
     store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, cast, poster_path }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;

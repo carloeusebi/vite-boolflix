@@ -51,6 +51,14 @@ export default {
 					<span v-else>{{ originalLanguage.toUpperCase() }}</span>
 				</div>
 
+				<!-- CAST -->
+				<div class="cast">
+					<strong>Cast:</strong>
+					<ul>
+						<li v-for="actor in cast">{{ actor }}</li>
+					</ul>
+				</div>
+
 				<!-- VOTE -->
 				<p class="rating">
 					<strong>Rating:</strong>
