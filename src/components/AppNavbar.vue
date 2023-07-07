@@ -12,6 +12,16 @@ export default {
 		handleClick(clickedLink) {
 			store.activePage = this.selectedLink = clickedLink;
 		},
+		userFriendlyName(link) {
+			switch (link) {
+				case 'movie':
+					return 'Film';
+				case 'tv':
+					return 'Serie Tv';
+				default:
+					return 'Home';
+			}
+		},
 	},
 };
 </script>
@@ -23,7 +33,7 @@ export default {
 				v-for="link in links"
 				@click="handleClick(link)"
 				:class="{ active: link === selectedLink }">
-				{{ link }}
+				{{ userFriendlyName(link) }}
 			</li>
 		</ul>
 	</nav>
