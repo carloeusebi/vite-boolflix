@@ -9,7 +9,7 @@ export const store = reactive({
         results: [],
         genres: []
     },
-    query: 'signore anelli', //todo remove, used for test
+    query: '',
     activePage: 'Home',
     genreFilter: '',
     isLoading: false
