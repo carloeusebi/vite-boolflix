@@ -50,11 +50,7 @@ export default {
 nav {
 	display: none;
 
-	margin-top: 6rem;
-	position: fixed;
 	color: $text-gray;
-	left: 0;
-	top: 0;
 	width: 200px;
 	height: 100vh;
 	padding-left: 1rem;

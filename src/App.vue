@@ -50,8 +50,14 @@ export default {
 
 <template>
 	<TheHeader @submitted-new-query="handleNewQuery" />
-	<TheSidebar />
-	<TheDisplay />
+	<div class="flex-container">
+		<TheSidebar />
+		<TheDisplay />
+	</div>
 </template>
 
-<style></style>
+<style>
+.flex-container {
+	display: flex;
+}
+</style>

@@ -67,9 +67,6 @@ export default {
 				:alt="title"
 				onerror="this.style.display='none'" />
 
-			<!-- ON 404 -->
-			<p class="on-image-error">{{ title }}</p>
-
 			<!-- OVERLAY -->
 			<div class="overlay">
 				<p><strong>Titolo:</strong> {{ title }}</p>
@@ -134,15 +131,6 @@ figure {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-
-.on-image-error {
-	position: absolute;
-	bottom: 2rem;
-	left: 0;
-	right: 0;
-	text-align: center;
-	font-weight: bold;
 }
 
 .original-language {
