@@ -4,7 +4,7 @@ import { store } from '../store/store';
 export default {
 	data() {
 		return {
-			links: ['Home', 'Serie Tv', 'Film'],
+			links: ['Home', 'Film', 'Serie Tv'],
 			selectedLink: 'Home',
 		};
 	},

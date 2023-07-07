@@ -51,13 +51,15 @@ export default {
 
 <style lang="scss" scoped>
 header {
-	margin: 0.5rem 2rem 3rem;
+	margin-bottom: 3rem;
+	padding: 1rem 2rem;
 	color: white;
 	position: sticky;
 	top: 0;
 	left: 0;
 	background-color: #1b1b1b;
 	z-index: 5;
+	user-select: none;
 
 	&,
 	.left {

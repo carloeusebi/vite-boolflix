@@ -1,6 +1,7 @@
 <script>
 import TheHeader from './components/TheHeader.vue';
 import TheDisplay from './components/TheDisplay.vue';
+import TheSidebar from './components/TheSidebar.vue';
 import { setMovies, setTvs } from './store/store';
 import { axiosInstance } from './axios';
 import { store } from './store/store';
@@ -30,7 +31,7 @@ const fetchGenres = (endpoint, destination) => {
 };
 
 export default {
-	components: { TheHeader, TheDisplay },
+	components: { TheHeader, TheDisplay, TheSidebar },
 	methods: {
 		handleNewQuery() {
 			if (store.query) {
@@ -49,6 +50,7 @@ export default {
 
 <template>
 	<TheHeader @submitted-new-query="handleNewQuery" />
+	<TheSidebar />
 	<TheDisplay />
 </template>
 
