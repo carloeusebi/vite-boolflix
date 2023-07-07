@@ -12,7 +12,13 @@ export default {
 		genres() {
 			const page = this.store.activePage;
 			if (page !== 'movie' && page !== 'tv') return null;
-			return this.store[page].genres;
+
+			const genres = this.store[page].genres;
+
+			//adding a 'show all' genre before every other genre;
+			genres.unshift({ id: null, name: 'Tutti' });
+
+			return genres;
 		},
 	},
 	methods: {
