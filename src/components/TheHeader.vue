@@ -7,7 +7,7 @@ export default {
   components: { AppSearchbar, AppNavbar },
   data() {
     return {
-      showSearchBar: false,
+      searchbarIsOpen: false,
     };
   },
   methods: {
@@ -16,6 +16,9 @@ export default {
     },
     handleKeyPress(word) {
       store.query = word;
+    },
+    toggleSearchBar() {
+      this.searchbarIsOpen = !this.searchbarIsOpen;
     },
   },
   emits: ['submitted-new-query'],
@@ -35,11 +38,11 @@ export default {
     </div>
     <div class="right">
       <AppSearchbar
-        v-if="showSearchBar"
+        v-if="searchbarIsOpen"
         @submitted="handleSubmit"
         @key-pressed="handleKeyPress" />
       <font-awesome-icon
-        @click="showSearchBar = !showSearchBar"
+        @click="toggleSearchBar"
         icon="fa-solid fa-magnifying-glass" />
       <font-awesome-icon icon="fa-solid fa-bell" />
     </div>
@@ -52,11 +55,18 @@ header {
   color: white;
 
   &,
-  :is(.left, .right) {
+  .left {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+}
+
+.right {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .svg-inline--fa {
