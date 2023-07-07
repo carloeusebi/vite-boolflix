@@ -6,6 +6,7 @@ import { setMovies, setTvs } from './store/store';
 import { axiosInstance } from './axios';
 import { store } from './store/store';
 
+import AppLoader from './components/AppLoader.vue';
 const MOVIE = 'movie';
 const TV = 'tv';
 
@@ -14,11 +15,11 @@ const TV = 'tv';
  * @param {string} endpoint the endpoint to call
  * @param {function} callback the function to store the results
  */
-const fetchResults = (endpoint, callback) => {
+const fetchResults = async (endpoint, callback) => {
 	const { query } = store;
 	const params = { query };
 
-	axiosInstance.get(endpoint, { params }).then(res => {
+	return await axiosInstance.get(endpoint, { params }).then(res => {
 		const medias = res.data.results;
 		callback(medias);
 	});
@@ -31,13 +32,17 @@ const fetchGenres = (endpoint, destination) => {
 };
 
 export default {
-	components: { TheHeader, TheDisplay, TheSidebar },
+	data: () => store,
+	components: { TheHeader, TheDisplay, TheSidebar, AppLoader },
 	methods: {
-		handleNewQuery() {
+		async handleNewQuery() {
 			if (store.query) {
+				store.isLoading = true;
 				// pass to fetch result the endpoint and the store function as a callback
-				fetchResults(`/search/${MOVIE}`, setMovies);
-				fetchResults(`/search/${TV}`, setTvs);
+				await fetchResults(`/search/${MOVIE}`, setMovies);
+				await fetchResults(`/search/${TV}`, setTvs);
+
+				store.isLoading = false;
 			}
 		},
 	},
@@ -52,8 +57,9 @@ export default {
 	<TheHeader @submitted-new-query="handleNewQuery" />
 	<div class="flex-container">
 		<TheSidebar />
-		<TheDisplay />
+		<TheDisplay v-if="!isLoading" />
 	</div>
+	<AppLoader />
 </template>
 
 <style>
