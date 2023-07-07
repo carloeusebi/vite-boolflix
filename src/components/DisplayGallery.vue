@@ -1,11 +1,19 @@
 <script>
+import { store } from '../store/store';
 import DisplayPoster from './DisplayPoster.vue';
 
 export default {
 	props: {
 		category: String,
 		title: String,
-		media: Array,
+	},
+	data() {
+		return store;
+	},
+	computed: {
+		media() {
+			return store[this.category].results;
+		},
 	},
 	components: { DisplayPoster },
 };

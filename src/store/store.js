@@ -1,8 +1,14 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
-    movies: [],
-    tvShows: [],
+    movie: {
+        results: [],
+        genres: []
+    },
+    tv: {
+        results: [],
+        genres: []
+    },
     query: 'signore anelli', //todo remove, used for test
 })
 
@@ -15,10 +21,10 @@ export const store = reactive({
 
 /**
  * Given an array of movie objects, it maps them filtering only the requested fields and then stores them in the store
- * @param {[Object]} movies 
+ * @param {[Object]} movie 
  */
-export const setMovies = movies => {
-    store.movies = movies.map(({ id, title, original_title, original_language, vote_average, overview, poster_path, cast }) => {
+export const setMovies = movie => {
+    store.movie.results = movie.map(({ id, title, original_title, original_language, vote_average, overview, poster_path, genre_ids }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
         const vote = Math.ceil(vote_average / 2);
@@ -29,7 +35,7 @@ export const setMovies = movies => {
             originalLanguage: original_language,
             vote,
             overview,
-            cast,
+            genre_ids,
             img
         };
     });
@@ -37,11 +43,11 @@ export const setMovies = movies => {
 
 /**
  * Given an array of tv shows objects, it maps them filtering only the requested fields and then stores them in the store
- * @param {[Object]} tvShows 
+ * @param {[Object]} tv 
 */
-export const setTvShows = tvShows => {
+export const setTvs = tv => {
 
-    store.tvShows = tvShows.map(({ id, name, original_name, original_language, vote_average, overview, cast, poster_path }) => {
+    store.tv.results = tv.map(({ id, name, original_name, original_language, vote_average, overview, genre_ids, poster_path }) => {
 
         const img = `https://image.tmdb.org/t/p/w342${poster_path}`;
         const vote = Math.ceil(vote_average / 2);
@@ -52,7 +58,7 @@ export const setTvShows = tvShows => {
             originalLanguage: original_language,
             vote,
             overview,
-            cast,
+            genre_ids,
             img
         }
     });

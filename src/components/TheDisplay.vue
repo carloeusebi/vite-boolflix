@@ -12,11 +12,9 @@ export default {
 	<main>
 		<div class="container">
 			<DisplayGallery
-				:media="movies"
 				category="movie"
 				title="Movies" />
 			<DisplayGallery
-				:media="tvShows"
 				category="tv"
 				title="TV Shows" />
 		</div>

@@ -1,7 +1,7 @@
 <script>
 import TheHeader from './components/TheHeader.vue';
 import TheDisplay from './components/TheDisplay.vue';
-import { setMovies, setTvShows } from './store/store';
+import { setMovies, setTvs } from './store/store';
 import { axiosInstance } from './axios';
 import { store } from './store/store';
 
@@ -14,9 +14,15 @@ const fetchResults = (endpoint, callback) => {
 	const { query } = store;
 	const params = { query };
 
-	axiosInstance.get(`/search${endpoint}`, { params }).then(res => {
+	axiosInstance.get(endpoint, { params }).then(res => {
 		const medias = res.data.results;
 		callback(medias);
+	});
+};
+
+const fetchGenres = (endpoint, destination) => {
+	axiosInstance.get(endpoint).then(res => {
+		store[destination].genres = res.data.genres;
 	});
 };
 
@@ -25,9 +31,15 @@ export default {
 	methods: {
 		handleNewQuery() {
 			if (store.query) {
+				const MOVIE = 'movie';
+				const TV = 'tv';
+
 				// pass to fetch result the endpoint and the store function as a callback
-				fetchResults('/movie', setMovies);
-				fetchResults('/tv', setTvShows);
+				fetchResults(`/search/${MOVIE}`, setMovies);
+				fetchResults(`/search/${TV}`, setTvs);
+
+				fetchGenres(`/genre/${MOVIE}/list`, MOVIE);
+				fetchGenres(`/genre/${TV}/list`, TV);
 			}
 		},
 	},

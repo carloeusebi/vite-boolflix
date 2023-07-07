@@ -1,5 +1,6 @@
 <script>
 import { axiosInstance } from '../axios';
+import { store } from '../store/store';
 
 export default {
 	props: {
@@ -11,6 +12,7 @@ export default {
 		overview: String,
 		img: String,
 		category: String,
+		genre_ids: Array,
 	},
 	data() {
 		return { cast: '' };
@@ -22,6 +24,13 @@ export default {
 
 			return lang === 'it' || lang === 'en' ? url.href : null;
 		},
+		genres() {
+			const { genres } = store[this.category];
+			return this.genre_ids.reduce((str, id) => {
+				const genreName = genres.find(genre => genre.id === id).name;
+				return (str += genreName + ', ');
+			}, '');
+		},
 	},
 	methods: {
 		starClass(n) {
@@ -30,8 +39,6 @@ export default {
 	},
 	mounted() {
 		const endpoint = `${this.category}/${this.id}/credits`;
-
-		console.log(endpoint);
 
 		axiosInstance.get(endpoint).then(res => {
 			const cast = res.data.cast;
@@ -75,6 +82,9 @@ export default {
 
 				<!-- CAST -->
 				<div class="cast"><strong>Cast:</strong> {{ cast }}</div>
+
+				<!-- GENRES -->
+				<div class="genres"><strong>Generi:</strong> {{ genres }}</div>
 
 				<!-- VOTE -->
 				<p class="rating">
