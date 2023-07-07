@@ -8,13 +8,9 @@ export default {
 		title: String,
 	},
 	data() {
-		return store;
+		return { store };
 	},
-	computed: {
-		media() {
-			return store[this.category].results;
-		},
-	},
+	computed: {},
 	components: { DisplayPoster },
 };
 </script>
@@ -24,7 +20,7 @@ export default {
 		<h2>{{ title }}</h2>
 		<div class="grid-container">
 			<DisplayPoster
-				v-for="m in media"
+				v-for="m in store[category].results"
 				:key="m.id"
 				:category="category"
 				v-bind="m" />
